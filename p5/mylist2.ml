@@ -55,6 +55,12 @@ let rec mem a l = match l with
   [] -> false
   | h::t -> (if a == h then true else mem a t);;
 
+let rev l =
+  let rec aux v = function
+    [] -> v
+    | h::t -> aux (h::v) t
+  in aux [] l;;
+
 let rec filter f l =
   let rec aux f l auxl = match l with
     [] -> auxl
@@ -81,12 +87,6 @@ let rec combine l1 l2 = match (l1, l2) with
   ([], []) -> []
   | (h1::t1, h2::t2) -> (h1, h2)::combine t1 t2
   | (_, _) -> raise(Invalid_argument"combine");;
-
-let rev l =
-  let rec aux v = function
-    [] -> v
-    | h::t -> aux (h::v) t
-  in aux [] l;;
 
 let init n f =
   if n < 0
