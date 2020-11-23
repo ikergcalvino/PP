@@ -4,6 +4,10 @@ let rec gcd a b =
   else gcd b (a mod b);;
 
 (* Ejercicio 2: *)
+(* La función is_prm calcula si un nº es primo o no *)
+(* (si es divisible o no por algún número anterior) *)
+  (* Es una función de tipo : int -> bool = <fun> *)
+
 let is_prm n =
   let rec not_divisible_from d =
     d * d > n || (n mod d <> 0 && not_divisible_from (d+1)) in
@@ -17,6 +21,10 @@ let is_prm2 n =
   n > 1 && not_divisible_from 2;;
   (* # is_prm2 999983;; *)
   (* Stack overflow during evaluation (looping recursion?). *)
+
+(* La desventaja de is_prm2 es que agota la pila por lo tanto *)
+    (* para nº elevados como 999983 se vuelve ineficiente *)
+            (* por ello la más aconsejable es is_prm *)
 
 (* Ejercicio 3: *)
 let capicua n =
