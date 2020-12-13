@@ -43,4 +43,8 @@ let rec msort2 ord l = match l with
   | _ -> let l1, l2 = divide' l
 in merge' ord (msort2 ord l1) (msort2 ord l2);;
 
-(* msort2 es un poco más lento que msort1 *)
+(* msort2 es un poco más lento que msort1 pero mucho más rápido que qsort2 *)
+(* - para msort2 ordenar [1..10000] le lleva sobre 0.008646 *)
+(* - para msort1 ordenar [1..10000] le lleva sobre 0.007983 *)
+(* - para qsort2 ordenar [1..10000] le lleva sobre 2.428965 *)
+(* Además para [1..100000] msort1 produce Stack Overflow y msort2 tarda sobre 0.13245 *)
