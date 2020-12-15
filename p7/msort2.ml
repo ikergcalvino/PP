@@ -34,9 +34,9 @@ let divide' l =
 let merge' ord (l1, l2) =
   let rec aux (a1, a2) mer = match a1, a2 with
     [], l | l, [] -> List.rev_append mer l
-    | h1::t1, h2::t2 -> if ord h1 h2 then aux (h1::mer) (t1, h2::t2)
-                        else aux (h2::mer) (h1::t1, t2)
-  in aux [] (l1, l2);;
+    | h1::t1, h2::t2 -> if ord h1 h2 then aux (t1, h2::t2) (h1::mer)
+                        else aux (h1::t1, t2) (h2::mer)
+  in aux (l1, l2) [];;
 
 let rec msort2 ord l = match l with
   [] | _::[] -> l
