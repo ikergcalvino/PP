@@ -1,13 +1,18 @@
 open G_tree;;
 
-let breadth_first_t arbol =
-  let rec aux acc = function
-      Gt (x, []) -> List.rev (x::acc)
-    | Gt (x, Gt(raiz, ramas)::lista) ->
-      aux (x::acc) (Gt(raiz, List.rev_append (List.rev lista) ramas))
-    in aux [] arbol;;
+let rec init = function i -> function f ->
+  let rec init_aux = (function (l, n, m) ->
+    if n > m then init_aux ((f m)::l, n, m + 1) else l)
+  in init_aux ([], i, 0);;
 
-let id x = x;;
-let leaf v = Gt(v, []);;
-let init_tree n = Gt(n, List.rev_map leaf (List.init n id));;
-let t = init_tree 500_000;;
+let t = Gt(0, init 1_000_000 (fun x -> Gt(x, [])));;
+
+let rec breadth_first = function
+    Gt (x, []) -> [x]
+  | Gt (x, (Gt (y, t2))::t1) -> x :: breadth_first (Gt (y, t1 @ t2));;
+
+let rec breadth_first_t t =
+  let rec aux acum = function
+      Gt (x, []) -> List.rev (x::acum)
+    | Gt (x, (Gt (y, t2))::t1) -> aux (x::acum) (Gt (y, List.rev_append (List.rev t1) t2))
+  in aux [] t;;
