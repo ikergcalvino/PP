@@ -23,3 +23,9 @@ Prácticas Paradigmas de Programación (curso 2020/21)
 - **Ej83:** *0'00*
 - **Ej93:** *7'00*
 - **Ej94:** *0'00*
+
+### Pruebas Prácticas
+- **Primes:** *ERROR* en [`primes`](https://github.com/ikergcalvino/Primes)
+- **Queens:** *copy and slower* en [`queens`](https://github.com/ikergcalvino/Queens)
+- **Comb:** *time-out* en [`comb`](https://github.com/ikergcalvino/Comb)
+- **Logic:** *null* en [`logic`](https://github.com/ikergcalvino/Logic)
